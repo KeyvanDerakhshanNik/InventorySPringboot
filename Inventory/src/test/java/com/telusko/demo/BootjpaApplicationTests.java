@@ -9,5 +9,4 @@ class BootjpaApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-
 }

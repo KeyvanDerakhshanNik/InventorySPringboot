@@ -1,19 +1,15 @@
-package com.telusko.demo;
+package com.telusko.demo.controller;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-
-
 
 import org.aspectj.lang.annotation.Before;
 import org.junit.Test;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-
 import com.telusko.demo.model.Inventory;
 import com.telusko.demo.model.OrderInventory;
-
 
 
 public class InvControllerTest extends AbstractTest{

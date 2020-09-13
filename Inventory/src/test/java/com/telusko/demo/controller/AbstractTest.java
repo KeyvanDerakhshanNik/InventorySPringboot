@@ -1,4 +1,4 @@
-package com.telusko.demo;
+package com.telusko.demo.controller;
 
 import java.io.IOException;
 
