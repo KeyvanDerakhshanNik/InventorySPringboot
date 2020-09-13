@@ -12,6 +12,7 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import com.telusko.demo.model.Inventory;
+import com.telusko.demo.model.OrderInventory;
 
 
 
@@ -32,5 +33,16 @@ public class InvControllerTest extends AbstractTest{
 	      String content = mvcResult.getResponse().getContentAsString();
 	      Inventory[] Inventories = super.mapFromJson(content, Inventory[].class);
 	      assertTrue(Inventories.length > 0);
+	   }
+	@Test
+	   public void getOrders() throws Exception {
+	      String uri = "/orders";
+	      MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.get(uri)
+	         .accept(MediaType.APPLICATION_JSON_VALUE)).andReturn();	      
+	      int status = mvcResult.getResponse().getStatus();
+	      assertEquals(200, status);
+	      String content = mvcResult.getResponse().getContentAsString();
+	      OrderInventory[] orders = super.mapFromJson(content, OrderInventory[].class);
+	      assertTrue(orders.length > 0);
 	   }
 }

@@ -25,13 +25,9 @@ import com.telusko.demo.dao.OrderRepo;
 import com.telusko.demo.model.Inventory;
 import com.telusko.demo.model.OrderInventory;
 
-//We notice it is controller
-//we can save (insert) , find(Select), remove (delete), delete and save (update) on database with repo. methods
-
 @Controller
 public class InvController {
 	
-	// to make instantiate and looking for an objects 
 	@Autowired
 	InventoryRepo inventoryrepo;
 	@Autowired
@@ -45,7 +41,6 @@ public class InvController {
 	    return  model;
 	}
 	
-	
 	@PostMapping(path="/inventories")
 	@ResponseBody
 	public Inventory addInventory(@RequestParam String name, @RequestParam String description, @RequestParam int price, @RequestParam int quantity) {
@@ -58,13 +53,12 @@ public class InvController {
 		return temp;
 	}
 	
-	
 	@GetMapping("/inventories")
 	@ResponseBody
 	public Iterable<Inventory> getInventories() {
 		return inventoryrepo.findAll();		
 	}
-	
+
 	@GetMapping("/inventories/1")
 	@ResponseBody
 	public String getInventory(@RequestParam int inventoryID) {		
@@ -132,7 +126,6 @@ public class InvController {
 	@DeleteMapping("/orders/1")
 	@ResponseBody
 	public String deleteOrder(@RequestParam int orderID) {
-		
 		OrderInventory order= orderrepo.findById(orderID).get();
 		Inventory inv =inventoryrepo.findById(order.getInvID()).get();
 		inv.setQuantity(inv.getQuantity()+order.getQuantities());
